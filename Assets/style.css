@@ -85,6 +85,7 @@ header {
   clear: both;
 }
 
+/* Button styling elements for 'Generate Password'. */
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -101,6 +102,7 @@ header {
   cursor: pointer;
 }
 
+/* Button styling elements for 'Copy Password to Clipboard'. */
 .btn2 {
   border: none;
   background-color: hsl(234, 100%, 50%);
@@ -147,6 +149,7 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* Media queries used to create a responsive application webpage when used on smaller viewports. */
 @media (max-width: 690px) {
   h2 {
     text-align: center;
