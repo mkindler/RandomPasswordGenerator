@@ -13,7 +13,7 @@ generateBtn.addEventListener("click", writePassword);
 copyBtn.addEventListener("click", copyPassword);
 
 
-// Write password to the #password input
+// Function Used to Generate a Random Password, and Write the Password to the Page
 function writePassword() {
 
   let newPassword = "";
