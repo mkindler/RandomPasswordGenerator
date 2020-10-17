@@ -1,19 +1,20 @@
 // Assignment Code
 let passwordText = document.querySelector("#password");
-let generateButton = document.querySelector("#generate");
-let copyButton = document.querySelector("#copy");
+let generateBtn = document.querySelector("#generate");
+let copyBtn = document.querySelector("#copy");
 
+// Possible Values for Password
 const lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
 const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numericalCharacters = "0123456789";
 const specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-generateButton.addEventListener("click", generatePassword);
-copyButton.addEventListener("click", copyPassword);
+generateBtn.addEventListener("click", writePassword);
+copyBtn.addEventListener("click", copyPassword);
 
 
 // Write password to the #password input
-function generatePassword() {
+function writePassword() {
 
   let newPassword = "";
   let passwordCharset = "";
@@ -21,33 +22,33 @@ function generatePassword() {
   let passwordLengthInput = prompt("How many characters would you like your password to be?");
 
   if (Number(passwordLengthInput < 8) | Number(passwordLengthInput > 128) | isNaN(passwordLengthInput)) {
-    alert("Please enter a number between 8 and 128!");
-    return;
+  alert("Sorry, please enter a number between 8 and 128.");
+  return;
   }
 
-  let lowercaseCharactersInput = confirm("Would you like lowercase letters to be included in your password?");
+    let lowercaseCharactersInput = confirm("Would you like lowercase letters to be included in your password?");
 
-  if (lowercaseCharactersInput) {
-    passwordCharset += lowercaseCharacters;
-  }
+    if (lowercaseCharactersInput) {
+      passwordCharset += lowercaseCharacters;
+    }
 
-  let uppercaseCharactersInput = confirm("Would you like uppercase letters to be included in your password?");
+    let uppercaseCharactersInput = confirm("Would you like uppercase letters to be included in your password?");
 
-  if (uppercaseCharactersInput) {
-    passwordCharset += uppercaseCharacters;
-  }
+    if (uppercaseCharactersInput) {
+      passwordCharset += uppercaseCharacters;
+    }
 
-  let numericalCharactersInput = confirm("Would you like numbers to be included in your password?");
+    let numericalCharactersInput = confirm("Would you like numbers to be included in your password?");
 
-  if (numericalCharactersInput) {
-        passwordCharset += numericalCharacters;
-  }
+    if (numericalCharactersInput) {
+          passwordCharset += numericalCharacters;
+    }
 
-  let specialCharactersInput = confirm("Would you like special characters to be included in your password?");
+    let specialCharactersInput = confirm("Would you like special characters to be included in your password?");
 
-  if (specialCharactersInput) {
-    passwordCharset += specialCharacters;
-  }
+    if (specialCharactersInput) {
+      passwordCharset += specialCharacters;
+    }
 
   if (passwordCharset === "") {
     alert("Please select at least one type of character you would like to include!");
@@ -58,23 +59,16 @@ function generatePassword() {
       newPassword += passwordCharset.charAt(Math.floor(Math.random() * passwordCharset.length));
     };
     localStorage.setItem("password", newPassword);
-    let newPasswordStr = localStorage.getItem("password");
-    passwordText.textContent = newPasswordStr;
+    let password = localStorage.getItem("password");
+    passwordText.value = password;
   };
 };
 
+// Function Used to Copy Password to Clipboard
 function copyPassword() {
+
   passwordText.select();
   document.execCommand("copy");
-  passwordText.innerHTML = "";
+  alert("Password copied to clipboard.")
+
 };
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-//   let password = generatePassword();
-//   let passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-//
